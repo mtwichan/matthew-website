@@ -1,4 +1,4 @@
-import ProjectPreview from "../../components/ProjectPreview";
+import ProjectPreview from "../../components/Projects/ProjectPreview";
 
 const Projects = () => {
     return (

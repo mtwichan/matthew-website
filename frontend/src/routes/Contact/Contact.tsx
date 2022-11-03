@@ -1,12 +1,34 @@
 import React, { useState } from "react";
-import ContactForm from "../../components/ContactForm";
+import axios from "axios";
 
-const FORM_ENDPOINT = "";
+import ContactForm from "../../components/Contact/ContactForm";
+import { BACKEND_CONTACT_API_URL } from "../../constants";
 
 const Contact = () => {
     const [submitted, setSubmitted] = useState(false)
-    const handleSubmit = (event: any) => {
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [affiliation, setAffiliation] = useState("")
+    const [message, setMessage] = useState("")
+
+    const onChangeHandlerName = (event: any) => {setName(event.target.value)};
+    const onChangeHandlerEmail = (event: any) => {setEmail(event.target.value)};
+    const onChangeHandlerAffiliation = (event: any) => {setAffiliation(event.target.value)};
+    const onChangeHandlerMessage = (event: any) => {setMessage(event.target.value)};
+
+    const handleSubmit = async (event: any) => {
         event.preventDefault();
+        try {
+            const res = await axios.post(BACKEND_CONTACT_API_URL, {
+                name: name,
+                email: email,
+                affiliation: affiliation,
+                message: message
+            })
+            console.log(res.data)
+        } catch (error) {
+            console.log("error contact form: ", error)
+        }        
     }
 
     if (submitted) {
@@ -25,7 +47,7 @@ const Contact = () => {
                     <div className="text-xl font-bold">Contact Me</div>
                     <div className="mt-1">Send me a message and I will be in touch promptly.</div>
                     <form
-                        action={FORM_ENDPOINT}
+                        action={BACKEND_CONTACT_API_URL}
                         onSubmit={(event) => handleSubmit(event)}
                         method="POST"
                         target="_blank"
@@ -37,6 +59,10 @@ const Contact = () => {
                                 type="text"
                                 placeholder="Your full name..."
                                 name="name"
+                                minLength={1}
+                                maxLength={30}
+                                onChange={onChangeHandlerName}
+                                value={name}
                                 className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-non focus:outline-none focus:ring w-full"
                                 required
                             />
@@ -47,6 +73,10 @@ const Contact = () => {
                                 type="text"
                                 placeholder="Your affiliation..."
                                 name="affiliation"
+                                minLength={1}
+                                maxLength={30}
+                                onChange={onChangeHandlerAffiliation}
+                                value={affiliation}
                                 className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-non focus:outline-none focus:ring w-full"
                                 required
                             />
@@ -54,18 +84,26 @@ const Contact = () => {
                         <div className="mb-5 pt-0 font-bold">
                             <label className="inline-block mb-2">Email</label>
                             <input
-                                type="text"
+                                type="email"
                                 placeholder="Your email..."
                                 name="email"
+                                minLength={1}
+                                maxLength={30}
+                                onChange={onChangeHandlerEmail}
+                                value={email}
                                 className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-non focus:outline-none focus:ring w-full"
                                 required
                             />
                         </div>
                         <div className="mb-5 pt-0 font-bold">
                             <label className="inline-block mb-2">Message</label>
-                            <textarea
+                            <textarea                            
                                 placeholder="Your message..."
                                 name="message"
+                                minLength={1}
+                                maxLength={200}
+                                onChange={onChangeHandlerMessage}
+                                value={message}
                                 className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white rounded text-sm border-0 shadow outline-non focus:outline-none focus:ring w-full"
                                 required
                             />
