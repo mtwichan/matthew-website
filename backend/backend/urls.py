@@ -28,7 +28,7 @@ sitemaps = {
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("blog.urls")),
-    # path("", include("project.urls")),
+    path("", include("project.urls")),
     path("", include("contact.urls")),
     path('martor/', include('martor.urls')),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap")

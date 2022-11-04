@@ -29,13 +29,16 @@ const BlogPreview = () => {
     const renderBlogPreviews = () => {
         console.log("Posts metadata >>>", posts)
        return posts.map((post: Post, idx: number) => {
-            return <BlogPreviewRow  key={idx} previewImg={post.preview_img} title={post.title} date={post.created_on} description={post.description} slug={post.slug}/>
+            return <BlogPreviewRow key={idx} previewImg={post.preview_img} title={post.title} date={post.created_on} description={post.description} slug={post.slug}/>
         })
     }
 
     return (
         <>
             <div className="container mx-auto">
+                <div className="mt-5 mb-2">
+                    <h1 className="text-4xl underline font-bold">Blog Posts</h1>
+                </div>                
                 <div>
                     {renderBlogPreviews()}
                 </div>

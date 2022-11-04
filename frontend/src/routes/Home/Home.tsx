@@ -153,8 +153,8 @@ const Home = () : JSX.Element => {
                         <p className="my-4 text-2xl">Hi I like working on XYZ</p>
                         {/* About me extended */}
                         <div className="w-full">
-                            I've just ended an 8 year stint as a Senior Engineer at Google, where I worked on making music and art and all sorts of creative interactions with Machine Learning, web components and web standards, and the guts of Chromium. You can read a bit more about me and my past work. Most of my personal code is on GitHub or on Glitch.
-                            I am available for freelance work in a consulting capacity, or as a tech advisor. If you would like to get in touch with me about working with you, email me and we'll chat!
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
                         </div>
                         {/* Call to action buttons */}
                         <div className="flex align-center my-4 flex-wrap">

@@ -6,17 +6,19 @@ import BlogPage from "../../components/Blog/BlogPage";
 import { BACKEND_BLOG_API_URL } from "../../constants";
 
 
-type Post = {
-    title: string
-    created_on: string,
-    description: string,
-    slug: string    
+interface Post {
+    title: string;
+    created_on: string;
+    description: string;
+    slug: string;
+    content:string;
+    preview_img: string;
 }
 
 const Blog = () => {
     const {blogSlug} = useParams();
     console.log(blogSlug)
-    const [post, setPost] = useState({})
+    const [post, setPost] = useState<Post>()
     
     useEffect(() => {
         const fetchPost = async () => {
@@ -30,16 +32,10 @@ const Blog = () => {
         }
         fetchPost();
     }, [])
-    console.log("posts data >>>", post)
-    // const renderBlogPreviews = () => {
-    //    return posts.map((post: Post, idx: number) => {
-    //         return <BlogPreviewRow key={idx} title={post.title} date={post.created_on} description={post.description} />
-    //     })
-    // }
 
     return (
         <>
-            <div className="container mx-auto">
+            <div className="container mx-auto">                
                 <BlogPage post={post}/>
             </div>
         </>

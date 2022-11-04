@@ -1,8 +1,4 @@
-from email.policy import default
-from enum import unique
-from random import choices
 from django.db import models
-from django.contrib.auth.models import User
 from martor.models import MartorField
 
 STATUS = ((0, "DRAFT"), (1, "PUBLISH"))

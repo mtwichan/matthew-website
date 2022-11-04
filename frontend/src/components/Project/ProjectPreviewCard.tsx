@@ -1,13 +1,14 @@
-type BlogPreviewRowProps = {
+
+type ProjectPreviewCardProps = {
     previewImg: string,
     title: string,
     date: string,
     description: string,
     slug: string
 }
-const BlogPreviewRow = ({previewImg, title, date, description, slug}: BlogPreviewRowProps) => {
+const ProjectPreviewCard = ({previewImg, title, date, description, slug}: ProjectPreviewCardProps): JSX.Element => {
     return (
-        <a href={`/blog/${slug}`}>
+        <a href={`/project/${slug}`}>
             <div className="flex mt-4 bg-cyan-50 hover:bg-cyan-100 border-black border-solid border-2">
                 <div className="pr-4 sm:h-[100px] md:h-[150px] lg:h-[175px]">
                     <img className="h-full w-full object-contain" src={`${previewImg}`} alt={`${title} preview`}></img></div>
@@ -26,5 +27,4 @@ const BlogPreviewRow = ({previewImg, title, date, description, slug}: BlogPrevie
         </a>
     )
 }
-
-export default BlogPreviewRow;
+export default ProjectPreviewCard;

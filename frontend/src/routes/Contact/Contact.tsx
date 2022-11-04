@@ -26,6 +26,7 @@ const Contact = () => {
                 message: message
             })
             console.log(res.data)
+            setSubmitted(true)
         } catch (error) {
             console.log("error contact form: ", error)
         }        
@@ -34,15 +35,18 @@ const Contact = () => {
     if (submitted) {
         return (
             <>
-                <div className="text-2xl">Thank you!</div>
-                <div className="text-md">Matthew will be in touch with you shortly.</div>
+            <div className="container border-1 p-10 mx-auto mt-5 mb-5 border-gray-200 border rounded shadow-lg w-6/12">
+                <div className="text-4xl text-center underline">Your message has been successfully sent!</div>
+                <div className="text-2xl text-center mt-5">I will be in touch with you shortly 🚀</div>
+                <div className="text-2xl text-center mt-5">In the mean time... why don't you checkout my <a href="/project" className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">projects</a> or <a href="blog" className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">blog</a> 👀</div>                
+            </div>
             </>
         )
     }
     // TODO: create form component
     return (
         <>
-            <div className="flex items-center justify-center h-[calc(100vh_-_125px)]">
+            <div className="flex w-full items-center justify-center h-[calc(100vh_-_125px)]">
                 <div className="container border-1 p-10 mx-auto mt-5 mb-5 border-gray-200 border rounded shadow-lg w-6/12">
                     <div className="text-xl font-bold">Contact Me</div>
                     <div className="mt-1">Send me a message and I will be in touch promptly.</div>
