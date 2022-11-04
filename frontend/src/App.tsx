@@ -11,7 +11,7 @@ import Contact from "./routes/Contact/Contact";
 import Project from "./routes/Projects/Project";
 
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="content-container">
       <Header />

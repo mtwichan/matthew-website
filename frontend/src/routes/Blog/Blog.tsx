@@ -15,7 +15,7 @@ interface Post {
     preview_img: string;
 }
 
-const Blog = () => {
+const Blog = (): JSX.Element => {
     const {blogSlug} = useParams();
     console.log(blogSlug)
     const [post, setPost] = useState<Post>()

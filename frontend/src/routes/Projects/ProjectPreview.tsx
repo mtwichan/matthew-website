@@ -16,7 +16,7 @@ const ProjectPreview = (): JSX.Element => {
     const [projects, setProjects] = useState([])
 
     useEffect(() => {
-        const fetchAllProjects = async () => {
+        const fetchAllProjects = async (): Promise<void> => {
             try {
                 const response = await axios.get(BACKEND_PROJECT_API_URL);
                 const projectData = response.data;
@@ -28,8 +28,7 @@ const ProjectPreview = (): JSX.Element => {
         fetchAllProjects();        
     }, [])
 
-    const renderProjectPreviews = () => {
-        console.log("Projects metadata >>>", projects)
+    const renderProjectPreviews = (): Array<JSX.Element> => {        
        return projects.map((project: Project, idx: number) => {
             return <ProjectPreviewCard key={idx} previewImg={project.preview_img} title={project.title} date={project.created_on} description={project.description} slug={project.slug}/>
         })

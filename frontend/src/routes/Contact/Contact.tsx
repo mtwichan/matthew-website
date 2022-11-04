@@ -4,20 +4,21 @@ import axios from "axios";
 import ContactForm from "../../components/Contact/ContactForm";
 import { BACKEND_CONTACT_API_URL } from "../../constants";
 
-const Contact = () => {
+const Contact = (): JSX.Element => {
     const [submitted, setSubmitted] = useState(false)
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [affiliation, setAffiliation] = useState("")
     const [message, setMessage] = useState("")
 
-    const onChangeHandlerName = (event: any) => {setName(event.target.value)};
-    const onChangeHandlerEmail = (event: any) => {setEmail(event.target.value)};
-    const onChangeHandlerAffiliation = (event: any) => {setAffiliation(event.target.value)};
-    const onChangeHandlerMessage = (event: any) => {setMessage(event.target.value)};
+    const onChangeHandlerName = (event: React.ChangeEvent<EventTarget>) => {const target = event.target as HTMLInputElement; setName(target.value)};
+    const onChangeHandlerEmail = (event: React.ChangeEvent<EventTarget>) => {const target = event.target as HTMLInputElement; setEmail(target.value)};
+    const onChangeHandlerAffiliation = (event: React.ChangeEvent<EventTarget>) => {const target = event.target as HTMLInputElement; setAffiliation(target.value)};
+    const onChangeHandlerMessage = (event: React.ChangeEvent<EventTarget>) => {const target = event.target as HTMLTextAreaElement; setMessage(target.value)};
 
-    const handleSubmit = async (event: any) => {
+    const handleSubmit = async (event: React.FormEvent<EventTarget>) => {
         event.preventDefault();
+        
         try {
             const res = await axios.post(BACKEND_CONTACT_API_URL, {
                 name: name,

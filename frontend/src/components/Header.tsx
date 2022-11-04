@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header = (): JSX.Element => {
     // TODO: Change CSS to single class and pass to className
     // TODO: Configure small screen button to expand menu options
     const activeItemCSS: string = "block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0";

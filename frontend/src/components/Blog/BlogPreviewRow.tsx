@@ -1,9 +1,9 @@
-type BlogPreviewRowProps = {
-    previewImg: string,
-    title: string,
-    date: string,
-    description: string,
-    slug: string
+interface BlogPreviewRowProps {
+    previewImg: string;
+    title: string;
+    date: string;
+    description: string;
+    slug: string;
 }
 const BlogPreviewRow = ({previewImg, title, date, description, slug}: BlogPreviewRowProps) => {
     return (

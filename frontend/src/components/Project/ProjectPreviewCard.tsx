@@ -1,10 +1,10 @@
 
-type ProjectPreviewCardProps = {
-    previewImg: string,
-    title: string,
-    date: string,
-    description: string,
-    slug: string
+interface ProjectPreviewCardProps {
+    previewImg: string;
+    title: string;
+    date: string;
+    description: string;
+    slug: string;
 }
 const ProjectPreviewCard = ({previewImg, title, date, description, slug}: ProjectPreviewCardProps): JSX.Element => {
     return (

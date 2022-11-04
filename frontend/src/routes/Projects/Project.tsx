@@ -16,13 +16,13 @@ interface ProjectProps {
     preview_img: string
 }
 
-const Project = () => {
+const Project = (): JSX.Element => {
     const {projectSlug} = useParams();
     // TODO: send empty object instead
     const [project, setProject] = useState<ProjectProps>()
     
     useEffect(() => {
-        const fetchProject = async () => {
+        const fetchProject = async (): Promise<void> => {
             try {
                 const response = await axios.get(BACKEND_PROJECT_API_URL + projectSlug);
                 const projectData = await response.data;
