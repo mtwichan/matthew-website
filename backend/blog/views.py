@@ -11,10 +11,29 @@ from .serializers import *
 @api_view(['GET', 'POST'])
 def post_list_all(request):
     if request.method == "GET":
-        data = Post.objects.all()
-        serializer = PostSerializer(data, context={'request': request}, many=True)
-        return Response(data=serializer.data, status=status.HTTP_200_OK)
+        try:
+            data = Post.objects.all()
+            
+            amount: int = request.query_params.get("amount")
+            order: str = request.query_params.get("order")
+            select: list = request.query_params.get("select")
 
+            if order:
+                data = data.order_by("-{order}".format(order=order))
+            
+            if amount:
+                data = data[:int(amount)]
+            
+            if select:
+                print("select >>>", select)
+                data = data.filter(**select)
+
+            serializer = PostSerializer(data, context={'request': request}, many=True)
+            return Response(data=serializer.data, status=status.HTTP_200_OK)
+        except Exception as error:
+            # TODO: add more error print statements to log errors in the console
+            print("Error: ", error)
+            return Response({"status":"failed", "error": str(error)}, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == "POST":
         serializer = PostSerializer(data=request.data)
         if serializer.is_valid():

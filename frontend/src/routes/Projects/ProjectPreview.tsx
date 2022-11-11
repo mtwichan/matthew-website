@@ -23,26 +23,57 @@ const ProjectPreview = (): JSX.Element => {
                 await setProjects(projectData)
             } catch (error) {
                 console.log("error calling fetchAllProjects(): ", error)
-            }            
+            }
         }
-        fetchAllProjects();        
+        fetchAllProjects();
     }, [])
 
-    const renderProjectPreviews = (): Array<JSX.Element> => {        
-       return projects.map((project: Project, idx: number) => {
-            return <ProjectPreviewCard key={idx} previewImg={project.preview_img} title={project.title} date={project.created_on} description={project.description} slug={project.slug}/>
+    const renderProjectPreviews = (): Array<JSX.Element> => {
+        return projects.map((project: Project, idx: number) => {
+            return <ProjectPreviewCard key={idx} previewImg={project.preview_img} title={project.title} date={project.created_on} description={project.description} slug={project.slug} />
         })
     }
 
     return (
         <>
-            <div className="container mx-auto">
-                <div className="mt-5 mb-2">
-                    <h1 className="underline font-bold text-4xl">Projects</h1>
-                </div>   
-                <div className="grid grid grid-cols-3 gap-4">
+            <div className="w-full bg-[#7b68ee]">
+                <div className="marquee bg-purple-500 border border-black border-2 p-2 mt-5">
+                    <ul className="marquee-content font-bold text-4xl text-white">
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                    </ul>
+                    <ul aria-hidden="true" className="marquee-content font-bold text-4xl text-white">
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                        <li>✦</li>
+                        <li>PROJECTS</li>
+                    </ul>
+                </div>
+                <div className="grid grid grid-cols-3 gap-4 mx-10">
                     {renderProjectPreviews()}
-                </div>      
+                </div>
             </div>
         </>
     )

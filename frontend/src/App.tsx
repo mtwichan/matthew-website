@@ -15,7 +15,7 @@ function App(): JSX.Element {
   return (
     <div className="content-container">
       <Header />
-      <div className="flex main-container">
+      <div className="flex main-container" >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/project" element={<ProjectPreview />} />
@@ -25,7 +25,7 @@ function App(): JSX.Element {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
-      <div className="footer-container">
+      <div className="footer-container z-10">
         <Footer />
       </div>
     </div>
